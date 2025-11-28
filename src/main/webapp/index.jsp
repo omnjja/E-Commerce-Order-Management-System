@@ -5,9 +5,12 @@
     <title>JSP - Hello World</title>
 </head>
 <body>
-<h1><%= "Hello World!" %>
-</h1>
-<br/>
-<a href="hello-servlet">Hello Servlet</a>
+
+<a href="customer">Test Customer Service</a><br>
+<a href="order">Test Order Service</a><br>
+<a href="inventory">Test Inventory Service</a><br>
+<a href="pricing">Test Pricing Service</a><br>
+<a href="notify">Test Notification Service</a><br>
+
 </body>
 </html>

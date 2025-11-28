@@ -11,8 +11,10 @@
     <title>Title</title>
 </head>
 <body>
-<form action="order" method="post">
-    <button type="submit">Create Test Order</button>
+<h2>Checkout Page</h2>
+
+<a href="order">Create Order</a>
+
 </form>
 
 

@@ -11,12 +11,10 @@
     <title>Title</title>
 </head>
 <body>
-<%
-    String result = (String) request.getAttribute("orderResponse");
-%>
-
 <h2>Order Confirmation</h2>
-<p><%= result %></p>
+<p>Your order has been processed successfully.</p>
+
+<a href="index.jsp">Back to Home</a>
 
 </body>
 </html>
