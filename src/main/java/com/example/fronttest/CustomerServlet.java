@@ -17,7 +17,7 @@ public class CustomerServlet extends HttpServlet {
         HttpClient client = HttpClient.newHttpClient();
 
         HttpRequest req = HttpRequest.newBuilder()
-                .uri(URI.create("http://localhost:5003/"))
+                .uri(URI.create("http://localhost:5004/"))
                 .build();
 
         HttpResponse<String> res = null;

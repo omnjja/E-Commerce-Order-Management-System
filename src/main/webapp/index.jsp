@@ -1,16 +1,30 @@
-<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<!DOCTYPE html>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page import="jakarta.servlet.RequestDispatcher" %>
+
 <html>
 <head>
-    <title>JSP - Hello World</title>
+    <title>Product Catalog</title>
+    <style>
+        body { font-family: Arial, sans-serif; background-color: #f4f6f8; padding: 20px; }
+        h2 { text-align: center; }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        th, td { padding: 10px; text-align: center; }
+        th { background-color: #007bff; color: white; }
+        tr:nth-child(even) { background-color: #f2f2f2; }
+        button { padding: 5px 10px; border: none; background-color: #28a745; color: white; border-radius: 3px; cursor: pointer; }
+        button:hover { background-color: #218838; }
+    </style>
 </head>
 <body>
 
-<a href="customer">Test Customer Service</a><br>
-<a href="order">Test Order Service</a><br>
-<a href="inventory">Test Inventory Service</a><br>
-<a href="pricing">Test Pricing Service</a><br>
-<a href="notify">Test Notification Service</a><br>
+<h2>🛒 Product Catalog</h2>
+
+<div style="display:flex; justify-content:center;">
+    <jsp:include page="inventoryList"/>
+</div>
+
 
 </body>
 </html>
+
+
