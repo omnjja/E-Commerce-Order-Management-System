@@ -31,19 +31,21 @@ public class InventoryServlet extends HttpServlet {
             JSONArray jsonArr = new JSONArray(res.body());
 
             out.println("<table border='1' cellpadding='10'>");
-            out.println("<tr><th>ID</th><th>Name</th><th>Quantity</th><th>Price</th><th>Action</th></tr>");
+            out.println("<tr><th>Select</th><th>Name</th><th>Available</th><th>Price</th><th>Quantity</th></tr>");
 
             for (int i = 0; i < jsonArr.length(); i++) {
                 JSONObject obj = jsonArr.getJSONObject(i);
                 out.println("<tr>");
-                out.println("<td>" + obj.getInt("product_id") + "</td>");
+                out.println("<td><input type='checkbox' name='product_id' value='" + obj.getInt("product_id") + "'></td>");
                 out.println("<td>" + obj.getString("product_name") + "</td>");
                 out.println("<td>" + obj.getInt("quantity_available") + "</td>");
                 out.println("<td>$" + obj.getString("unit_price") + "</td>");
-                out.println("<td><form method='get' action='checkout.jsp'>"
-                        + "<input type='hidden' name='product_id' value='" + obj.getInt("product_id") + "'/>"
-                        + "<button type='submit'>Buy Now</button></form></td>");
+                out.println("<td>");
+                out.println("<input type='number' name='quantity_" + obj.getInt("product_id") + "' min='1' max='"
+                        + obj.getInt("quantity_available") + "' value='1'>");
+                out.println("</td>");
                 out.println("</tr>");
+
             }
             out.println("</table>");
 
