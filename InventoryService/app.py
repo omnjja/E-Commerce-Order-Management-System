@@ -44,5 +44,13 @@ def update_inventory():
     except Exception as e:
         return jsonify({"error": str(e)}), 400
 
+# endpoint يعرض كل المنتجات
+@app.route('/api/inventory/all', methods=['GET'])
+def get_all_inventory():
+    cursor.execute("SELECT * FROM inventory")
+    products = cursor.fetchall()
+    return jsonify(products)
+
+
 if __name__ == '__main__':
     app.run(port=5002, debug=True)
