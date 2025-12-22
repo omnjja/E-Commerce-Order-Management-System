@@ -33,7 +33,8 @@ def update_inventory():
     data = request.get_json()
     try:
         product_id = data['product_id']
-        new_quantity = data['quantity_available']
+        new_quantity = data.get('quantity_available') or data.get('quantity')
+
 
         cursor.execute(
             "UPDATE inventory SET quantity_available=%s, last_updated=CURRENT_TIMESTAMP WHERE product_id=%s",
