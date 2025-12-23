@@ -28,11 +28,19 @@
 </head>
 <body>
 
+<%
+    if (session.getAttribute("customer_id") == null) {
+        response.sendRedirect("selectCustomer");
+        return;
+    }
+%>
+
+
 <h2>🛒 Product Catalog</h2>
 
 <div class="top-links">
-    <a href="profile.jsp">👤 Profile</a>
-    <a href="viewOrdersHistory.jsp">📦 Orders History</a>
+    <a href="profile">👤 Profile</a>
+    <a href="viewOrdersHistory">📦 Orders History</a>
 </div>
 
 <form method="post" action="prepareOrder">
