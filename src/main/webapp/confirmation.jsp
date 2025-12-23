@@ -47,7 +47,6 @@
         out.println("</tr>");
     }
 
-    // إجماليات الطلب
     out.println("<tr class='totals'><td colspan='3'>Total Before Tax</td><td>" + pricing.getDouble("total_before_tax") + " EGP</td></tr>");
     out.println("<tr class='totals'><td colspan='3'>Tax</td><td>" + pricing.getDouble("tax_amount") + " EGP</td></tr>");
     out.println("<tr class='totals'><td colspan='3'>Final Total</td><td>" + pricing.getDouble("final_total") + " EGP</td></tr>");

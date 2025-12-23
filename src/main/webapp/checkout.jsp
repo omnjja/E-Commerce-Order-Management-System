@@ -86,7 +86,7 @@
         <% } %>
 
         Customer ID:
-        <input type="number" name="customer_id" required style="width:100%;padding:6px;">
+        <input type="number" name="customer_id" value="<%= session.getAttribute("customer_id") %>" required style="width:100%;padding:6px;">
 
         <button type="submit">✅ Confirm Order</button>
     </form>

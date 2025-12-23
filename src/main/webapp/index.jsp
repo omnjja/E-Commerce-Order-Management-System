@@ -32,12 +32,12 @@
 
 <div class="top-links">
     <a href="profile.jsp">👤 Profile</a>
-    <a href="orders.jsp">📦 Orders History</a>
+    <a href="viewOrdersHistory.jsp">📦 Orders History</a>
 </div>
 
 <form method="post" action="prepareOrder">
 
-    <!-- الجدول بييجي من الـ Servlet -->
+<%--    tables from inventory--%>
     <jsp:include page="inventoryList"/>
 
     <div style="text-align:center; margin-top:20px;">
