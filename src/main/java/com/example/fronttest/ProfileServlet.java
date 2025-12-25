@@ -14,8 +14,6 @@ import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 
-//http://localhost:8080/FrontTest_war_exploded/profile?customer_id=3
-
 @WebServlet("/profile")
 public class ProfileServlet extends HttpServlet {
 
@@ -25,7 +23,9 @@ public class ProfileServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-
+        // ======================================
+        // 1. Check if customer is selected/logged in
+        // ======================================
         HttpSession session = request.getSession(false);
         if (session == null || session.getAttribute("customer_id") == null) {
             response.sendRedirect("index.jsp");
@@ -36,6 +36,9 @@ public class ProfileServlet extends HttpServlet {
 
 
         try {
+            // ======================================
+            // 2. Call Customer Service to get profile data
+            // ======================================
             HttpClient client = HttpClient.newHttpClient();
 
             HttpRequest getReq = HttpRequest.newBuilder()
@@ -52,7 +55,9 @@ public class ProfileServlet extends HttpServlet {
             if (getRes.statusCode() == 200) {
                 customerJson = new JSONObject(getRes.body());
             }
-
+            // ======================================
+            // 3. Forward customer data to profile page
+            // ======================================
             request.setAttribute("customer", customerJson);
             request.getRequestDispatcher("profile.jsp").forward(request, response);
 

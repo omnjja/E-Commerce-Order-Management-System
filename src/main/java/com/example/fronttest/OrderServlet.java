@@ -5,6 +5,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -30,7 +31,9 @@ public class OrderServlet extends HttpServlet {
             // get data from checkout.jsp
             String[] productIds = request.getParameterValues("product_id");
             String[] quantities = request.getParameterValues("quantity");
-            int customerId = Integer.parseInt(request.getParameter("customer_id"));
+            // get customer from session
+            HttpSession session = request.getSession(false);
+            int customerId = (Integer) session.getAttribute("customer_id");
 
             if (productIds == null || quantities == null || productIds.length != quantities.length) {
                 throw new RuntimeException("No products received or mismatch in quantities");

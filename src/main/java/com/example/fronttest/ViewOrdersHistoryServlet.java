@@ -15,8 +15,6 @@ import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 
-// http://localhost:8080/FrontTest_war_exploded/viewOrdersHistory?customer_id=3
-
 @WebServlet("/viewOrdersHistory")
 public class ViewOrdersHistoryServlet extends HttpServlet {
 
@@ -26,18 +24,6 @@ public class ViewOrdersHistoryServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
-//        String customerIdParam = request.getParameter("customer_id");
-//        int customerId = 0;
-//        if (customerIdParam != null) {
-//            try {
-//                customerId = Integer.parseInt(customerIdParam);
-//            } catch (NumberFormatException e) {
-//                throw new ServletException("Invalid customer_id parameter");
-//            }
-//        } else {
-//            throw new ServletException("customer_id parameter is required");
-//        }
         HttpSession session = request.getSession(false);
         if (session == null || session.getAttribute("customer_id") == null) {
             response.sendRedirect("index.jsp");

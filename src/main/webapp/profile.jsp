@@ -13,8 +13,8 @@
     <style>
         body { font-family: Arial, sans-serif; margin: 20px; }
         h1 { color: #333; }
-        .profile-container { max-width: 500px; margin: auto; padding: 20px; border: 1px solid #ccc; border-radius: 8px; }
-        p { font-size: 16px; line-height: 1.5; }
+        .profile-container { max-width: 500px; margin: auto; padding: 20px; border: 1px solid #ccc; border-radius: 8px; margin-top: 100px  }
+        p { font-size: 16px; line-height: 1.5;}
         strong { color: #555; }
     </style>
 </head>

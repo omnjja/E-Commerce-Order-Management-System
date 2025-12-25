@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page import="org.json.JSONArray, org.json.JSONObject" %>
 <html>
 <head>
     <title>Login Simulation</title>
@@ -11,6 +12,7 @@
             border-radius: 8px;
             box-shadow: 0 4px 10px rgba(0,0,0,0.1);
             text-align: center;
+            margin-top: 100px;
         }
 
         .customer-card h3 {
@@ -51,9 +53,19 @@
     <form action="selectCustomer" method="post" class="customer-form">
         <select name="customer_id" required>
             <option value="" disabled selected>-- Choose Customer --</option>
-            <option value="1">Customer 1</option>
-            <option value="2">Customer 2</option>
-            <option value="3">Customer 3</option>
+            <%
+                JSONArray customers = (JSONArray) request.getAttribute("customers");
+                if (customers != null) {
+                    for (int i = 0; i < customers.length(); i++) {
+                        JSONObject c = customers.getJSONObject(i);
+            %>
+            <option value="<%= c.getInt("customer_id") %>">
+                <%= c.getString("name") %>
+            </option>
+            <%
+                    }
+                }
+            %>
         </select>
 
         <button type="submit">Continue</button>
