@@ -18,6 +18,14 @@ cursor = conn.cursor(dictionary=True)
 def home():
     return "Customer Service is running!"
 
+# Get all customers
+@app.route("/api/customers", methods=["GET"])
+def get_all_customers():
+    cursor.execute("SELECT * FROM customers")
+    customers = cursor.fetchall()
+
+    return jsonify(customers)
+
 # Get customer profile
 @app.route("/api/customers/<int:customer_id>", methods=["GET"])
 def get_customer(customer_id):
@@ -64,7 +72,6 @@ NOTIFICATION_SERVICE_URL = "http://localhost:5005/api/notifications"
 
 @app.route("/api/customers/<int:customer_id>/notifications", methods=["GET"])
 def get_customer_notifications(customer_id):
-    # تأكدي إن الكستمر موجود
     cursor.execute(
         "SELECT customer_id FROM customers WHERE customer_id=%s",
         (customer_id,)

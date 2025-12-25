@@ -103,23 +103,6 @@ def create_order():
                 "quantity_available": new_quantity
             }
         )
-        # -------- Send Notification --------
-        notification_payload = {
-            "order_id": order_id,
-            "customer_id": customer_id
-        }
-
-        try:
-            notif_resp = requests.post(
-                "http://localhost:5005/api/notifications/send",
-                json=notification_payload
-            )
-            if notif_resp.status_code == 200:
-                print(f"Notification sent for order {order_id}")
-            else:
-                print(f"Failed to send notification for order {order_id}")
-        except Exception as e:
-            print(f"Error sending notification: {e}")
 
     return jsonify({
         "message": "Order created successfully",
@@ -176,9 +159,6 @@ def get_orders_by_customer():
     db.close()
 
     return jsonify(orders), 200
-
-
-
 
 if __name__ == '__main__':
     app.run(port=5001, debug=True)

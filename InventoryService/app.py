@@ -17,7 +17,6 @@ cursor = conn.cursor(dictionary=True)
 def home():
     return "Inventory Service is running!"
 
-# Endpoint للتحقق من المخزون
 @app.route('/api/inventory/check/<int:product_id>', methods=['GET'])
 def check_inventory(product_id):
     cursor.execute("SELECT * FROM inventory WHERE product_id = %s", (product_id,))
@@ -27,7 +26,7 @@ def check_inventory(product_id):
     else:
         return jsonify({"error": "Product not found"}), 404
 
-# Endpoint لتحديث المخزون بعد الطلب
+# Endpoint to update inventory
 @app.route('/api/inventory/update', methods=['PUT'])
 def update_inventory():
     data = request.get_json()
@@ -45,7 +44,7 @@ def update_inventory():
     except Exception as e:
         return jsonify({"error": str(e)}), 400
 
-# endpoint يعرض كل المنتجات
+# endpoint to show all products
 @app.route('/api/inventory/all', methods=['GET'])
 def get_all_inventory():
     cursor.execute("SELECT * FROM inventory")
